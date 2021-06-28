@@ -112,20 +112,20 @@ ConvertCoins:
     ; Group two
     gTwoGold := Floor(gOneSilver/5)
     gTwoSilver := Floor( (CopperInput/5) - (gTwoGold*5) )
-    gTwoCopper := Mod( CopperInput - (gTwoSilver*5) - (gTwoGold*25), 5)
+    gTwoCopper := gOneCopper
     
     ; Group three
     gThreePlatinum := Floor(gTwoGold/5)
     gThreeGold := Floor( (gOneSilver/5) - (gThreePlatinum*5) )
-    gThreeSilver := Floor( (CopperInput/5) - (gThreePlatinum*25) - (gThreeGold*5) )
-    gThreeCopper := Mod( CopperInput - (gThreeSilver*5) - (gThreeGold*25) - (gThreePlatinum*125), 5)
+    gThreeSilver := gTwoSilver
+    gThreeCopper := gTwoCopper
 
     ; Group four
     gFourEmerald := Floor(gThreePlatinum/5)
     gFourPlatinum := Floor( (gTwoGold/5) - (gFourEmerald*5) )
-    gFourGold := Floor( (gOneSilver/5) - (gFourPlatinum*5) - (gFourEmerald*25) )
-    gFourSilver := Floor( (CopperInput/5) - (gFourEmerald*125) - (gFourPlatinum*25) - (gFourGold*5) )
-    gFourCopper := Mod( CopperInput - (gFourSilver*5) - (gFourGold*25) - (gFourPlatinum*125) - (gFourEmerald*625) , 5)
+    gFourGold := gThreeGold
+    gFourSilver := gThreeSilver
+    gFourCopper := gThreeCopper
 
     GuiControl,  Calc:, GroupOneSilver, % gOneSilver
     GuiControl,  Calc:, GroupOneCopper, % gOneCopper
