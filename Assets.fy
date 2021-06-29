@@ -14,3 +14,6 @@ if !FileExist("%A_Temp%\CashLazlo\platinum_coin.png")
     FileInstall, Assets\platinum_coin.png, %Assets%\platinum_coin.png, 1
 if !FileExist("%A_Temp%\CashLazlo\emerald_coin.png")
     FileInstall, Assets\emerald_coin.png, %Assets%\emerald_coin.png, 1
+
+if !FileExist("%A_Temp%\CashLazlo\Mojangles.ttf")
+    FileInstall, Assets\Mojangles.ttf, %Assets%\Mojangles.ttf, 1

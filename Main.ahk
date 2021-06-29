@@ -5,12 +5,16 @@ SetWorkingDir %A_ScriptDir%
 ListLines Off
 
 #Include Assets.fy
+#Include OnExit.fy
 
 ; Compiler directives
 ;@Ahk2Exe-SetName Cash Lazlo Currency Calculator
 ;@Ahk2Exe-SetMainIcon app_icon.ico
 ;@Ahk2Exe-SetCopyright Baconfry & OhBirb @ 2021
-;@Ahk2Exe-SetVersion 0.0.1
+;@Ahk2Exe-SetVersion 0.0.2
+
+; This OnExit function will unload Mojangles once the app is closed
+OnExit("OnAppExit")
 
 calculatorWidth := 300
 , copperCoin := Assets . "\copper_coin.png"
@@ -18,12 +22,24 @@ calculatorWidth := 300
 , goldCoin := Assets . "\gold_coin.png"
 , platinumCoin := Assets . "\platinum_coin.png"
 , emeraldCoin := Assets . "\emerald_coin.png"
-, inputWidth := (calculatorWidth - 56)
+, fontFile := Assets . "\Mojangles.ttf"
+, inputWidth := (calculatorWidth - 20)
+, controlWidth := (calculatorWidth - 10)
 
-Gui, Calc:New,, Cash Lazlo Converter
-Gui, Calc:Font, s13, Calibri
-Gui, Calc:Add, Edit, y10 x10 w%inputWidth% h32 Limit15 Number gConvertCoins vCopperInput,
-Gui, Calc:Add, Picture, x+6 w32 h32, % copperCoin
+; Sideload Mojangles
+DllCall( "Gdi32.dll\AddFontResourceEx"
+        , "Str", fontFile
+        , "UInt", (FR_PRIVATE := 0x10)
+        , "Int", 0)
+
+Gui, Calc:New,, Coinculator
+Gui, Calc:Font, s19, Calibri
+Gui, Calc:Font, s17, Mojangles ; Fallback font
+Gui, Calc:Add, Edit, x10 y10  w%inputWidth% h32 Limit15 gConvertCoins vCopperInput Number,
+Gui, Calc:Font, s12, Calibri
+Gui, Calc:Font, s12, Mojangles ; Fallback font
+Gui, Calc:Add, Text, x10 y+10, % "Input coin:"
+Gui, Calc:Add, DropDownList, x+10 yp-2 vCoinChoice gCurrencyChange, Copper||Silver|Gold|Platinum|Emerald
 Gui, Calc:Add, Progress, x0 y+10 w%calculatorWidth% h1 BackgroundBlack
 
 ; Group One
@@ -77,12 +93,25 @@ Gui, Show, w%calculatorWidth% h%calculatorHeight%
 
 ; Delete temporary files
 FileRemoveDir, %Assets%, 1
-return
+
+return ; End of auto-execute section
 
 ConvertCoins:
     Gui, Calc:Submit, NoHide
 
-    if(CopperInput = "") {
+    switch CoinChoice
+    {
+        case "Silver":
+            CopperInput *= 5
+        case "Gold":
+            CopperInput *= 25
+        case "Platinum":
+            CopperInput *= 125
+        case "Emerald":
+            CopperInput *= 625            
+    }
+
+    if (CopperInput = "") {
         GuiControl,  Calc:, GroupOneSilver, 0
         GuiControl,  Calc:, GroupOneCopper, 0
         
@@ -144,5 +173,22 @@ ConvertCoins:
     GuiControl,  Calc:, GroupFourCopper, % gFourCopper
 return
 
+CurrencyChange:
+    Gui, Calc:Submit, NoHide
+    switch CoinChoice
+    {
+        case "Silver":
+            CopperInput *= 5
+        case "Gold":
+            CopperInput *= 25
+        case "Platinum":
+            CopperInput *= 125
+        case "Emerald":
+            CopperInput *= 625            
+    }
+    Gosub, ConvertCoins
+return
+
 CalcGuiClose:
 ExitApp
+
