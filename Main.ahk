@@ -36,7 +36,7 @@ DllCall( "Gdi32.dll\AddFontResourceEx"
 Gui, Calc:New,, Coinculator
 Gui, Calc:Font, s19, Calibri
 Gui, Calc:Font, s17, Mojangles ; Fallback font
-Gui, Calc:Add, Edit, x10 y10  w%inputWidth% h32 Limit15 gConvertCoins vCopperInput Number,
+Gui, Calc:Add, Edit, x10 y10  w%inputWidth% h32 Limit14 gConvertCoins vCopperInput Number,
 Gui, Calc:Font, s12, Calibri
 Gui, Calc:Font, s12, Mojangles ; Fallback font
 Gui, Calc:Add, Text, x10 y+10, % "Input coin:"
