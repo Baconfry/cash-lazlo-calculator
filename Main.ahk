@@ -34,11 +34,11 @@ DllCall( "Gdi32.dll\AddFontResourceEx"
         , "Int", 0)
 
 Gui, Calc:New,, Coinculator
-Gui, Calc:Font, s19, Calibri
-Gui, Calc:Font, s17, Mojangles ; Fallback font
+Gui, Calc:Font, s19, Calibri ; Fallback font
+Gui, Calc:Font, s17, Mojangles
 Gui, Calc:Add, Edit, x10 y10  w%inputWidth% h32 Limit14 gConvertCoins vCopperInput Number,
-Gui, Calc:Font, s12, Calibri
-Gui, Calc:Font, s12, Mojangles ; Fallback font
+Gui, Calc:Font, s12, Calibri ; Fallback font
+Gui, Calc:Font, s12, Mojangles
 Gui, Calc:Add, Text, x10 y+10, % "Input coin:"
 Gui, Calc:Add, DropDownList, x+10 yp-2 vCoinChoice gCurrencyChange, Copper||Silver|Gold|Platinum|Emerald
 Gui, Calc:Add, Progress, x0 y+10 w%calculatorWidth% h1 BackgroundBlack
