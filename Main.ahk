@@ -1,6 +1,6 @@
 #NoEnv
 #NoTrayIcon
-#SingleInstance, Force
+#SingleInstance, off
 SetWorkingDir %A_ScriptDir%
 ListLines Off
 
