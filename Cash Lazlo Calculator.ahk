@@ -27,8 +27,7 @@ Gui, Calc:Add, Picture, x+6 w32 h32, % copperCoin
 Gui, Calc:Add, Progress, x0 y+10 w%calculatorWidth% h1 BackgroundBlack
 
 ; Group One
-Gui, Calc:Font, s10, Calibri
-Gui, Calc:Add, Text, x10 y+10, % "Silver and copper coins:"
+Gui, Calc:Add, Text, x10 y+10 w%controlWidth%, % "Silver and copper coins:"
 Gui, Calc:Add, Picture, x10 y+5 w16 h16, % silverCoin
 Gui, Calc:Add, Text, x+2 w%inputWidth% vGroupOneSilver, 0
 Gui, Calc:Add, Picture, x10 y+5 w16 h16, % copperCoin
@@ -36,7 +35,7 @@ Gui, Calc:Add, Text, x+2 w%inputWidth% vGroupOneCopper, 0
 Gui, Calc:Add, Progress, x0 y+10 w%calculatorWidth% h1 BackgroundBlack
 
 ; Group Two
-Gui, Calc:Add, Text, x10 y+10, % "Gold, silver and copper coins:"
+Gui, Calc:Add, Text, x10 y+10 w%controlWidth%, % "Gold, silver and copper coins:"
 Gui, Calc:Add, Picture, x10 y+5 w16 h16, % goldCoin
 Gui, Calc:Add, Text, x+2 w%inputWidth% vGroupTwoGold, 0
 Gui, Calc:Add, Picture, x10 y+5 w16 h16, % silverCoin
@@ -46,7 +45,7 @@ Gui, Calc:Add, Text, x+2 w%inputWidth% vGroupTwoCopper, 0
 Gui, Calc:Add, Progress, x0 y+10 w%calculatorWidth% h1 BackgroundBlack
 
 ; Group Three
-Gui, Calc:Add, Text, x10 y+10, % "Platinum, gold, silver and copper coins:"
+Gui, Calc:Add, Text, x10 y+10 w%controlWidth%, % "Platinum, gold, silver and copper coins:"
 Gui, Calc:Add, Picture, x10 y+5 w16 h16, % platinumCoin
 Gui, Calc:Add, Text, x+2 w%inputWidth% vGroupThreePlatinum, 0
 Gui, Calc:Add, Picture, x10 y+5 w16 h16, % goldCoin
@@ -58,7 +57,7 @@ Gui, Calc:Add, Text, x+2 w%inputWidth% vGroupThreeCopper, 0
 Gui, Calc:Add, Progress, x0 y+10 w%calculatorWidth% h1 BackgroundBlack
 
 ; Group Four
-Gui, Calc:Add, Text, x10 y+10, % "In terms of all coins:"
+Gui, Calc:Add, Text, x10 y+10 w%controlWidth%, % "In terms of all coins:"
 Gui, Calc:Add, Picture, x10 y+5 w16 h16, % emeraldCoin
 Gui, Calc:Add, Text, x+2 w%inputWidth% vGroupFourEmerald, 0
 Gui, Calc:Add, Picture, x10 y+5 w16 h16, % platinumCoin
