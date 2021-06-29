@@ -3,7 +3,6 @@
 #SingleInstance, Force
 SetWorkingDir %A_ScriptDir%
 ListLines Off
-SetBatchLines, -1
 
 #Include Assets.fy
 
